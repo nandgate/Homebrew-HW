@@ -1,0 +1,61 @@
+LISTING FOR LOGIC DESCRIPTION FILE: MAINBOARD.pld                    Page 1
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Wed Aug 24 19:56:45 2022
+
+  1:Name      MainBoatf;
+  2:Partno    MB001;
+  3:Date      07/10/2022;
+  4:Rev       01;
+  5:Designer  Squire0412;
+  6:Company   OSHW;
+  7:Assembly  None;
+  8:Location  None;
+  9:Device    g16v8a;
+ 10:
+ 11:/** Inputs **/
+ 12:
+ 13:Pin 1 = ECLK0;
+ 14:Pin 2 = ECLK1;
+ 15:Pin 3 = IOn;
+ 16:Pin [4..7] = [A4..7];
+ 17:Pin 8 = RAMn;
+ 18:Pin 9 = A15;
+ 19:Pin 11 = VIA_IRQn;
+ 20:Pin 12 = JP;
+ 21:
+ 22:/** Outputs **/
+ 23:
+ 24:Pin 13 = BD_EN1n;
+ 25:Pin 14 = BD_EN0n;
+ 26:Pin 15 = RAM0n;
+ 27:Pin 16 = RAM1m;
+ 28:Pin 17 = VIA_CSn; 
+ 29:Pin 18 = IRQ1n;
+ 30:Pin 19 = IRQ0n;
+ 31:
+ 32:/* VIA interrupt generates IRQ1 = 1, IRQ0 = 0 */
+ 33:/* When no interrupt is being generated then IRQ1= 1, IRQ0= 1 */
+ 34:IRQ0n = VIA_IRQn;
+ 35:IRQ1n = 'b'1;
+ 36:
+ 37:/* VIA chip select when access IO at 0x0 */
+ 38:VIA_CSn = !(!IOn & !A7 & !A6 & !A5 & !A4);
+ 39:
+ 40:/* RAM1 selects when accessing RAM and A15 is 1 */
+ 41:/* RAM0 selects when accessing RAM and A15 is 0 */
+ 42:RAM1n = !(!RAMn & A15);
+ 43:RAM0n = !(!RAMn & !A15);
+ 44:
+ 45:/* BD_EN0 and BD_EN1 are always low */
+ 46:BD_EN0n = 'b'0;
+ 47:BD_EN1n = 'b'0;
+ 48:
+ 49:
+
+
+
+Jedec Fuse Checksum       (19a6)
+Jedec Transmit Checksum   (956a)

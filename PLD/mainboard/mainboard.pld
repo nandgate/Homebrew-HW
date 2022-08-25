@@ -1,0 +1,47 @@
+Name      MainBoatf;
+Partno    MB001;
+Date      07/10/2022;
+Rev       01;
+Designer  Squire0412;
+Company   OSHW;
+Assembly  None;
+Location  None;
+Device    g16v8a;
+
+/** Inputs **/
+
+Pin 1 = ECLK0;
+Pin 2 = ECLK1;
+Pin 3 = IOn;
+Pin [4..7] = [A4..7];
+Pin 8 = RAMn;
+Pin 9 = A15;
+Pin 11 = VIA_IRQn;
+Pin 12 = JP;
+
+/** Outputs **/
+
+Pin 13 = BD_EN1n;
+Pin 14 = BD_EN0n;
+Pin 15 = RAM0n;
+Pin 16 = RAM1m;
+Pin 17 = VIA_CSn; 
+Pin 18 = IRQ1n;
+Pin 19 = IRQ0n;
+
+/* VIA interrupt generates IRQ1 = 1, IRQ0 = 0 */
+/* When no interrupt is being generated then IRQ1= 1, IRQ0= 1 */
+IRQ0n = VIA_IRQn;
+IRQ1n = 'b'1;
+
+/* VIA chip select when access IO at 0x0 */
+VIA_CSn = !(!IOn & !A7 & !A6 & !A5 & !A4);
+
+/* RAM1 selects when accessing RAM and A15 is 1 */
+/* RAM0 selects when accessing RAM and A15 is 0 */
+RAM1n = !(!RAMn & A15);
+RAM0n = !(!RAMn & !A15);
+
+/* BD_EN0 and BD_EN1 are always low */
+BD_EN0n = 'b'0;
+BD_EN1n = 'b'0;
