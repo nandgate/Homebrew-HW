@@ -350,6 +350,41 @@
         )
       )
     )
+    (symbol "Connector:TestPoint" (pin_numbers hide) (pin_names (offset 0.762) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "TP" (id 0) (at 0 6.858 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "TestPoint" (id 1) (at 0 5.08 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (id 2) (at 5.08 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "~" (id 3) (at 5.08 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "test point tp" (id 4) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "test point" (id 5) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "Pin* Test*" (id 6) (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "TestPoint_0_1"
+        (circle (center 0 3.302) (radius 0.762)
+          (stroke (width 0) (type default) (color 0 0 0 0))
+          (fill (type none))
+        )
+      )
+      (symbol "TestPoint_1_1"
+        (pin passive line (at 0 0 90) (length 2.54)
+          (name "1" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
     (symbol "Connector_Generic:Conn_01x02" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
       (property "Reference" "J" (id 0) (at 0 2.54 0)
         (effects (font (size 1.27 1.27)))
@@ -2671,6 +2706,22 @@
     (pin "1" (uuid 57f2510e-51c7-473c-9c24-158ca1194c7b))
   )
 
+  (symbol (lib_id "power:GND") (at 45.085 138.43 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid 7989795d-b5ea-462d-abd3-0ef6f2acf03b)
+    (property "Reference" "#PWR0101" (id 0) (at 45.085 144.78 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (id 1) (at 45.085 141.605 0))
+    (property "Footprint" "" (id 2) (at 45.085 138.43 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 45.085 138.43 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid ef1fe973-b7d5-443f-9191-2726585547d0))
+  )
+
   (symbol (lib_id "74xx:74LS573") (at 170.18 42.545 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 7ac1c150-c689-4215-8e8a-2aea17961164)
@@ -2791,6 +2842,24 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 820cb77c-7a5c-4799-b5f1-8478c8e74ae2))
+  )
+
+  (symbol (lib_id "Connector:TestPoint") (at 45.085 138.43 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid 8f9f6e00-addf-4ad0-852d-50a5ef5cc377)
+    (property "Reference" "TP1" (id 0) (at 43.815 132.715 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "TestPoint" (id 1) (at 46.99 136.3979 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Footprint" "TestPoint:TestPoint_Pad_2.0x2.0mm" (id 2) (at 50.165 138.43 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (id 3) (at 50.165 138.43 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid eb1cdd65-d59d-4730-98ce-a997442ae461))
   )
 
   (symbol (lib_id "Device:R") (at 43.815 37.465 0) (unit 1)
@@ -3445,8 +3514,8 @@
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/baa4e9bb-cc5e-4a7b-b830-9316ccb0b447"
       (reference "#PWR036") (unit 1) (value "GND") (footprint "")
     )
-    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/a1ea716f-d74a-42e1-a4ee-8077a999a4c6"
-      (reference "#PWR037") (unit 1) (value "+5V") (footprint "")
+    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/572e22a4-5a36-492f-96f5-8653b2cdd6c0"
+      (reference "#PWR037") (unit 1) (value "GND") (footprint "")
     )
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/2192b315-909c-43ec-9a95-0e05dbfdb00f"
       (reference "#PWR038") (unit 1) (value "+5V") (footprint "")
@@ -3478,8 +3547,8 @@
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/347248c0-3bd2-4465-be87-65e143f6b7c9"
       (reference "#PWR047") (unit 1) (value "GND") (footprint "")
     )
-    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/10920450-f609-40a3-a196-107d35fca69b"
-      (reference "#PWR049") (unit 1) (value "+5V") (footprint "")
+    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/b89a8f1d-13c2-4752-9d9c-a14a0015eb09"
+      (reference "#PWR048") (unit 1) (value "+5V") (footprint "")
     )
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/9dfd0efe-aaf7-4329-a280-909345173c10"
       (reference "#PWR051") (unit 1) (value "+5V") (footprint "")
@@ -3495,9 +3564,6 @@
     )
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/3bb454ab-97f1-40eb-b69a-76246a59adb3"
       (reference "#PWR055") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/2e1e0802-5dd8-4f18-beea-162baed3e4a2"
-      (reference "#PWR056") (unit 1) (value "GND") (footprint "")
     )
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/89b44d99-a484-443a-84f7-d1e884a9b1f3"
       (reference "#PWR057") (unit 1) (value "GND") (footprint "")
@@ -3528,6 +3594,9 @@
     )
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/a3067663-3911-434a-8e0a-393d3ceec06f"
       (reference "#PWR066") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/7989795d-b5ea-462d-abd3-0ef6f2acf03b"
+      (reference "#PWR0101") (unit 1) (value "GND") (footprint "")
     )
     (path "/f4ef7c09-905b-4928-877e-7b13f4d3d6aa"
       (reference "C1") (unit 1) (value "0.1 uF") (footprint "Capacitor_THT:C_Rect_L7.2mm_W3.0mm_P5.00mm_FKS2_FKP2_MKS2_MKP2")
@@ -3571,6 +3640,12 @@
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/6196ab35-a3e4-45c2-95d1-ca0a643d9f8b"
       (reference "J3") (unit 1) (value "Conn_02x21_Odd_Even") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x21_P2.54mm_Vertical")
     )
+    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/0f4a1487-ff45-48ec-b885-e5c18ebf0159"
+      (reference "J4") (unit 1) (value "Conn_01x02") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
+    )
+    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/d19781b2-c162-4ff4-ab07-cdeb1e21cbb7"
+      (reference "J5") (unit 1) (value "Conn_01x02") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
+    )
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/e5be52e5-23ca-4ab0-b421-43ad1046b3bc"
       (reference "PS1") (unit 1) (value "TBA_2-1211") (footprint "CONV_TBA_2-1211")
     )
@@ -3592,14 +3667,11 @@
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/3660b2a2-68f6-4621-b93e-feb1e42d1f62"
       (reference "R6") (unit 1) (value "1K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal")
     )
-    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/1e3c63fb-9929-4c14-9a3c-27a01671aa2f"
+    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/d9de125e-a9bd-4745-9145-00f9916e9989"
+      (reference "R7") (unit 1) (value "10.5K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal")
+    )
+    (path "/8f9f6e00-addf-4ad0-852d-50a5ef5cc377"
       (reference "TP1") (unit 1) (value "TestPoint") (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm")
-    )
-    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/6d2ee18d-4651-4771-8b02-9b099e1ba550"
-      (reference "TP2") (unit 1) (value "TestPoint") (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm")
-    )
-    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/172917ed-5d4b-4d55-a475-9afd37ee96a8"
-      (reference "TP3") (unit 1) (value "TestPoint") (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm")
     )
     (path "/16a9718d-07c5-4df3-afa2-28f0913d98b2"
       (reference "U1") (unit 1) (value "74LS161") (footprint "Package_DIP:DIP-16_W7.62mm")
