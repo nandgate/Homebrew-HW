@@ -3,7 +3,7 @@ LISTING FOR LOGIC DESCRIPTION FILE: 6502.pld                         Page 1
 CUPL(WM): Universal Compiler for Programmable Logic
 Version 5.0a Serial# 60008009
 Copyright (c) 1983, 1998 Logical Devices, Inc.
-Created Wed Aug 24 19:37:31 2022
+Created Wed Aug 24 20:06:36 2022
 
   1:Name      CPU6502;
   2:Partno    CPU6502;
@@ -64,7 +64,7 @@ LISTING FOR LOGIC DESCRIPTION FILE: 6502.pld                         Page 2
 CUPL(WM): Universal Compiler for Programmable Logic
 Version 5.0a Serial# 60008009
 Copyright (c) 1983, 1998 Logical Devices, Inc.
-Created Wed Aug 24 19:37:31 2022
+Created Wed Aug 24 20:06:36 2022
 
  54:/* Memory Decode
  55: *              32Kn = high             32Kn = low
@@ -84,4 +84,4 @@ Created Wed Aug 24 19:37:31 2022
 
 
 Jedec Fuse Checksum       (85c8)
-Jedec Transmit Checksum   (b5e0)
+Jedec Transmit Checksum   (b5d9)
