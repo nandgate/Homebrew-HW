@@ -1,0 +1,65 @@
+Name      CPU6802;
+Partno    CPU6802;
+Date      08/16/2022;
+Rev       01;
+Designer  Squire0412;
+Company   OSHW;
+Assembly  None;
+Location  None;
+Device    g22v10;
+
+/** Inputs **/
+
+Pin 1 = 32Kn;
+Pin 2 = R_Wn;
+Pin 3 = CLK;
+Pin 4 = MEM;
+pin 5 = A8;
+pin 6 = A9;
+pin 7 = A11;
+pin 8 = A15;
+pin 9 = A10;
+pin 10 = A14;
+pin 11 = A12;
+pin 13 = A13;
+Pin 14 = BD_ENn;
+pin 22 = CLK_37;
+
+/** Outputs **/
+
+Pin 15 = BUS_DIRn;
+pin 16 = ROMn;
+pin 17 = WRn;
+pin 18 = RDn;
+pin 19 = IOn;
+pin 20 = RAMn;
+pin 23 = ECLK;
+pin 21 = CLK_39;
+
+field addr = [A15..8];
+
+/* Connect pin 37 on the 6802 (E) to the ECLK on the bus. */
+ECLK = CLK_37;
+
+/* Connect pin 39 on the 6802 (EXTAL) to the OSC. */
+CLK_39 = CLK;
+
+/* RW generates RDn & WRn. Pulse with ECLK when board is enable. */
+WRn = !(!BD_ENn & ECLK & MEM & R_Wn);
+RDn = !(!BD_ENn & ECLK & MEM & !R_Wn);
+
+/* Data bus control: Enable tranciever when the board is enabled and the  */
+BUS_DIRn = !BD_ENn & ECLK & MEM & !R_Wn;
+
+/* Memory Decode
+ *		32Kn = high		32Kn = low
+ * RAMn	0000-01FF		0000-01FF
+ * IOn		0200-02FF		0200-02FF
+ * RAMn	0300-7FFF		0300-DFFF
+ * ROMn	8000-FFFF		E000-FFFF
+ *
+ * Valid cycles have the board enabled and pulsed with ECLK.
+ */
+RAMn = !BD_ENn & ECLK & MEM & (addr:[00xx..01xx] # (32Kn & addr:[03xx..7Fxx]) # (!32Kn & addr:[03xx..DFxx]));
+IOn =  !BD_ENn & ECLK & MEM & addr:[02xx..02xx];
+ROMn = !BD_ENn & ECLK & MEM & ((32Kn & addr:[80xx..FFxx]) # (!32Kn & addr:[E0xx..FFxx]));
