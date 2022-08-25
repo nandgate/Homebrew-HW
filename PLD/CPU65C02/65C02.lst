@@ -1,0 +1,87 @@
+LISTING FOR LOGIC DESCRIPTION FILE: 65C02.pld                        Page 1
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Wed Aug 24 20:10:45 2022
+
+  1:Name      CPU65C02;
+  2:Partno    CPU65C02;
+  3:Date      08/16/2022;
+  4:Rev       01;
+  5:Designer  Squire0412;
+  6:Company   OSHW;
+  7:Assembly  None;
+  8:Location  None;
+  9:Device    g22v10;
+ 10:
+ 11:/** Inputs **/
+ 12:
+ 13:Pin 1 = 32Kn;
+ 14:Pin 2 = R_Wn;
+ 15:Pin 3 = CLK;
+ 16:Pin 4 = MEM;
+ 17:pin 5 = A8;
+ 18:pin 6 = A9;
+ 19:pin 7 = A11;
+ 20:pin 8 = A15;
+ 21:pin 9 = A10;
+ 22:pin 10 = A14;
+ 23:pin 11 = A12;
+ 24:pin 13 = A13;
+ 25:Pin 14 = BD_ENn;
+ 26:pin 21 = CLK_39;
+ 27:
+ 28:/** Outputs **/
+ 29:
+ 30:Pin 15 = BUS_DIRn;
+ 31:pin 16 = ROMn;
+ 32:pin 17 = WRn;
+ 33:pin 18 = RDn;
+ 34:pin 19 = IOn;
+ 35:pin 20 = RAMn;
+ 36:pin 22 = CLK_37;
+ 37:pin 23 = ECLK;
+ 38:
+ 39:field addr = [A15..8];
+ 40:
+ 41:/* Connect OSC to pin 37 (PH2-in) on the 65C02. */
+ 42:CLK_37 = CLK;
+ 43:
+ 44:/* Connect pin 39 on the 65C02 (PH2-out) to the ECLK on the bus. */
+ 45:ECLK = CLK_39;
+ 46:
+ 47:/* RW generates RDn & WRn. Pulse with ECLK when board is enable. */
+ 48:WRn = !(!BD_ENn & ECLK & R_Wn);
+ 49:RDn = !(!BD_ENn & ECLK & !R_Wn);
+ 50:
+ 51:/* Data bus control: Enable tranciever when the board is enabled and the  */
+ 52:BUS_DIRn = !BD_ENn & ECLK & !R_Wn;
+ 53:
+
+LISTING FOR LOGIC DESCRIPTION FILE: 65C02.pld                        Page 2
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Wed Aug 24 20:10:45 2022
+
+ 54:/* Memory Decode
+ 55: *              32Kn = high             32Kn = low
+ 56: * RAMn 0000-01FF               0000-01FF
+ 57: * IOn          0200-02FF               0200-02FF
+ 58: * RAMn 0300-7FFF               0300-DFFF
+ 59: * ROMn 8000-FFFF               E000-FFFF
+ 60: *
+ 61: * Valid cycles have the board enabled and pulsed with ECLK.
+ 62: */
+ 63:RAMn = !BD_ENn & ECLK & (addr:[00xx..01xx] # (32Kn & addr:[03xx..7Fxx]) # (!32Kn & addr:[03xx..DFxx]));
+ 64:IOn =  !BD_ENn & ECLK & addr:[02xx..02xx];
+ 65:ROMn = !BD_ENn & ECLK & ((32Kn & addr:[80xx..FFxx]) # (!32Kn & addr:[E0xx..FFxx]));
+ 66:
+ 67:
+
+
+
+Jedec Fuse Checksum       (85f4)
+Jedec Transmit Checksum   (b8d6)
