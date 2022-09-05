@@ -2,7 +2,7 @@
 #
 # CUPL(WM)        5.0a Serial# 60008009
 # Device          g16v8as  Library DLIB-h-40-2
-# Created         Wed Aug 24 19:56:45 2022
+# Created         Sat Sep 03 18:53:42 2022
 # Name            MainBoatf
 # Partno          MB001
 # Revision        01
@@ -12,20 +12,21 @@
 # Assembly        None
 # Location        None
 #
-# Inputs  0 1 A4 A5 
-#         A6 A7 A15 BD_EN0n 
-#         BD_EN1n ECLK0 ECLK1 IOn 
-#         IRQ0n IRQ1n JP RAM0n 
-#         RAM1m RAMn VIA_CSn VIA_IRQn 
+# Inputs  0 A4 A5 A6 
+#         A7 A15 BD_EN0n BD_EN1n 
+#         ECLK0 ECLK1 IOn IRQ0n 
+#         IRQ1n JP RAM0n RAM1n 
+#         RAMn VIA_CSn VIA_IRQn 
 # Outputs BD_EN0n BD_EN1n IRQ0n IRQ1n 
-#         !RAM0n !VIA_CSn 
-.i 20
-.o 6
-.p 6
-1------------------- 1~~~~~
-1------------------- ~1~~~~
--------------------1 ~~1~~~
--1------------------ ~~~1~~
-------0----------0-- ~~~~1~
---0000-----0-------- ~~~~~1
+#         !RAM0n !RAM1n !VIA_CSn 
+.i 19
+.o 7
+.p 7
+-------------1----- 1~~~~~~
+-------------0----- ~1~~~~~
+------------------0 ~~1~~~~
+1------------------ ~~~1~~~
+-----0----------0-- ~~~~1~~
+-----1----------0-- ~~~~~1~
+-0000-----0-------- ~~~~~~1
 .end
