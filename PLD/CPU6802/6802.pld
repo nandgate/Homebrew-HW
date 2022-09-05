@@ -23,7 +23,7 @@ pin 10 = A14;
 pin 11 = A12;
 pin 13 = A13;
 Pin 14 = BD_ENn;
-pin 22 = CLK_37;
+pin 22 = CLK_37;	/* E from 6802 */
 
 /** Outputs **/
 
@@ -33,8 +33,8 @@ pin 17 = WRn;
 pin 18 = RDn;
 pin 19 = IOn;
 pin 20 = RAMn;
-pin 23 = ECLK;
-pin 21 = CLK_39;
+pin 23 = ECLK;	
+pin 21 = CLK_39;	/* EXTAL to 6802 */
 
 field addr = [A15..8];
 
@@ -45,11 +45,11 @@ ECLK = CLK_37;
 CLK_39 = CLK;
 
 /* RW generates RDn & WRn. Pulse with ECLK when board is enable. */
-WRn = !(!BD_ENn & ECLK & MEM & R_Wn);
-RDn = !(!BD_ENn & ECLK & MEM & !R_Wn);
+WRn = !(!BD_ENn & MEM & !R_Wn);
+RDn = !(!BD_ENn & MEM & R_Wn);
 
 /* Data bus control: Enable tranciever when the board is enabled and the  */
-BUS_DIRn = !BD_ENn & ECLK & MEM & !R_Wn;
+BUS_DIRn = !BD_ENn & MEM & !R_Wn;
 
 /* Memory Decode
  *		32Kn = high		32Kn = low
@@ -60,6 +60,6 @@ BUS_DIRn = !BD_ENn & ECLK & MEM & !R_Wn;
  *
  * Valid cycles have the board enabled and pulsed with ECLK.
  */
-RAMn = !BD_ENn & ECLK & MEM & (addr:[00xx..01xx] # (32Kn & addr:[03xx..7Fxx]) # (!32Kn & addr:[03xx..DFxx]));
-IOn =  !BD_ENn & ECLK & MEM & addr:[02xx..02xx];
-ROMn = !BD_ENn & ECLK & MEM & ((32Kn & addr:[80xx..FFxx]) # (!32Kn & addr:[E0xx..FFxx]));
+RAMn = !(!BD_ENn & ECLK & MEM & (addr:[00xx..01xx] # (32Kn & addr:[03xx..7Fxx]) # (!32Kn & addr:[03xx..DFxx])));
+IOn =  !(!BD_ENn & MEM & addr:[02xx..02xx]);
+ROMn = !(!BD_ENn & ECLK & MEM & ((32Kn & addr:[80xx..FFxx]) # (!32Kn & addr:[E0xx..FFxx])));
