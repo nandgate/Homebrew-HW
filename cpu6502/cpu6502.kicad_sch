@@ -3598,6 +3598,9 @@
     (path "/7989795d-b5ea-462d-abd3-0ef6f2acf03b"
       (reference "#PWR0101") (unit 1) (value "GND") (footprint "")
     )
+    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/9e8c2aee-583d-4648-9088-3351e9e502c1"
+      (reference "#PWR?") (unit 1) (value "+5V") (footprint "")
+    )
     (path "/f4ef7c09-905b-4928-877e-7b13f4d3d6aa"
       (reference "C1") (unit 1) (value "0.1 uF") (footprint "Capacitor_THT:C_Rect_L7.2mm_W3.0mm_P5.00mm_FKS2_FKP2_MKS2_MKP2")
     )
@@ -3626,7 +3629,7 @@
       (reference "C9") (unit 1) (value "0.1 uF") (footprint "Capacitor_THT:C_Rect_L7.2mm_W3.0mm_P5.00mm_FKS2_FKP2_MKS2_MKP2")
     )
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/f9624042-d3bc-4530-a683-e53f7a9371a2"
-      (reference "C10") (unit 1) (value "10 uF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm")
+      (reference "C10") (unit 1) (value "47 uF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm")
     )
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/ba415360-f60f-41e8-b726-85d072c3ffb9"
       (reference "D1") (unit 1) (value "IRL81A") (footprint "LED_THT:LED_D5.0mm")
@@ -3665,10 +3668,13 @@
       (reference "R5") (unit 1) (value "10.5K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal")
     )
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/3660b2a2-68f6-4621-b93e-feb1e42d1f62"
-      (reference "R6") (unit 1) (value "1K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal")
+      (reference "R6") (unit 1) (value "3.3K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal")
     )
     (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/d9de125e-a9bd-4745-9145-00f9916e9989"
       (reference "R7") (unit 1) (value "10.5K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal")
+    )
+    (path "/7ed65a36-0033-45ba-8699-70a6490fe1a8/fdb0ecb3-6b64-4246-b510-527f13334018"
+      (reference "R?") (unit 1) (value "10.5K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal")
     )
     (path "/8f9f6e00-addf-4ad0-852d-50a5ef5cc377"
       (reference "TP1") (unit 1) (value "TestPoint") (footprint "TestPoint:TestPoint_Pad_2.0x2.0mm")
