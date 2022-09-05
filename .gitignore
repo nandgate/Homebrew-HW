@@ -1,3 +1,9 @@
+.DS_Store
 **/fp-info-cache
 *-backups/
 bom/
+*.kicad_prl
+PLD/*/*.doc
+PLD/*/*.lst
+PLD/*/*.pdf
+
