@@ -1,0 +1,56 @@
+Name      CPUZ80;
+Partno    CPUz80;
+Date      09/29/2022;
+Rev       01;
+Designer  Squire0412;
+Company   OSHW;
+Assembly  None;
+Location  None;
+Device    g16v8;
+
+/** Inputs **/
+
+Pin 1 = 32Kn;
+Pin 2 = Z80_WRn;
+Pin 3 = IORQn;
+Pin 4 = MREQn;
+pin 5 = Z80_RDn;
+pin 6 = A14;
+pin 7 = A13;
+pin 8 = A12;
+pin 9 = A15;
+pin 11 = CLK;
+pin 12 = BD_ENn;
+
+/** Outputs **/
+
+Pin 13 = BUS_DIRn;
+pin 14 = ROMn;
+pin 15 = WRn;
+pin 16 = RDn;
+pin 17 = IOn;
+pin 18 = RAMn;
+pin 19 = ECLK;
+
+field addr = [A15..12];
+
+ECLK = CLK;
+
+/* RW generates RDn & WRn. Pulse with ECLK when board is enable. */
+WRn = !(!BD_ENn & !Z80_WRn);
+RDn = !(!BD_ENn & !Z80_RDn);
+
+/* Data bus control:   */
+BUS_DIRn = !BD_ENn & !Z80_WRn;
+
+/* Memory Decode
+ *		32Kn = high		32Kn = low
+ * ROMn	0000-7FFF		0000-1FFF
+ * RAMn	8000-FFFF		2000-FFFF
+ */
+RAMn = !(!BD_ENn & !MREQn & (!Z80_WRn # !Z80_RDn) & ((32Kn & addr:[8xxx..Fxxx]) # (!32Kn & addr:[2xxx..Fxxx])));
+ROMn = !(!BD_ENn & !MREQn & (!Z80_WRn # !Z80_RDn) & ((32Kn & addr:[0xxx..7xxx]) # (!32Kn & addr:[0xxx..1xxx])));
+/* RAMn = !(!BD_ENn & !MREQn & ((32Kn & addr:[8xxx..Fxxx]) # (!32Kn & addr:[2xxx..Fxxx]))); */
+/* ROMn = !(!BD_ENn & !MREQn & ((32Kn & addr:[0xxx..7xxx]) # (!32Kn & addr:[0xxx..1xxx]))); */
+IOn =  !(!BD_ENn & !IORQn);
+

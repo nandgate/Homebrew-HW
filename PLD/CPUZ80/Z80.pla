@@ -1,0 +1,40 @@
+# Berkeley PLA format generated using
+#
+# CUPL(WM)        5.0a Serial# 60008009
+# Device          g16v8s  Library DLIB-h-40-9
+# Created         Thu Sep 29 21:37:02 2022
+# Name            CPUZ80
+# Partno          CPUz80
+# Revision        01
+# Date            09/29/2022
+# Designer        Squire0412
+# Company         OSHW
+# Assembly        None
+# Location        None
+#
+# Inputs  32Kn A12 A13 A14 
+#         A15 BD_ENn BUS_DIRn CLK 
+#         ECLK IORQn IOn MREQn 
+#         RAMn RDn ROMn WRn 
+#         Z80_RDn Z80_WRn 
+# Outputs BUS_DIRn ECLK !IOn !RAMn 
+#         !RDn !ROMn !WRn 
+.i 18
+.o 7
+.p 15
+-----0-----------0 1~~~~~~
+-------1---------- ~1~~~~~
+-----0---0-------- ~~1~~~~
+0-1--0-----0-----0 ~~~1~~~
+0-1--0-----0----0- ~~~1~~~
+0-01-0-----0-----0 ~~~1~~~
+0-01-0-----0----0- ~~~1~~~
+----10-----0-----0 ~~~1~~~
+----10-----0----0- ~~~1~~~
+-----0----------0- ~~~~1~~
+--0000-----0-----0 ~~~~~1~
+--0000-----0----0- ~~~~~1~
+1---00-----0-----0 ~~~~~1~
+1---00-----0----0- ~~~~~1~
+-----0-----------0 ~~~~~~1
+.end
