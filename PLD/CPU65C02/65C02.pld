@@ -45,11 +45,11 @@ CLK_37 = CLK;
 ECLK = CLK_39;
 
 /* RW generates RDn & WRn. Pulse with ECLK when board is enable. */
-WRn = !(!BD_ENn & ECLK & R_Wn);
-RDn = !(!BD_ENn & ECLK & !R_Wn);
+WRn = !(!BD_ENn & !R_Wn);
+RDn = !(!BD_ENn & R_Wn);
 
 /* Data bus control: Enable tranciever when the board is enabled and the  */
-BUS_DIRn = !BD_ENn & ECLK & !R_Wn;
+BUS_DIRn = !BD_ENn & !R_Wn;
 
 /* Memory Decode
  *		32Kn = high		32Kn = low
@@ -60,6 +60,6 @@ BUS_DIRn = !BD_ENn & ECLK & !R_Wn;
  *
  * Valid cycles have the board enabled and pulsed with ECLK.
  */
-RAMn = !BD_ENn & ECLK & (addr:[00xx..01xx] # (32Kn & addr:[03xx..7Fxx]) # (!32Kn & addr:[03xx..DFxx]));
-IOn =  !BD_ENn & ECLK & addr:[02xx..02xx];
-ROMn = !BD_ENn & ECLK & ((32Kn & addr:[80xx..FFxx]) # (!32Kn & addr:[E0xx..FFxx]));
+RAMn = !(!BD_ENn & ECLK & (addr:[00xx..01xx] # (32Kn & addr:[03xx..7Fxx]) # (!32Kn & addr:[03xx..DFxx])));
+IOn =  !(!BD_ENn & addr:[02xx..02xx]);
+ROMn = !(!BD_ENn & ECLK & ((32Kn & addr:[80xx..FFxx]) # (!32Kn & addr:[E0xx..FFxx])));
