@@ -48,7 +48,7 @@ ECLK = CLK_39;
 WRn = !(!BD_ENn & !R_Wn);
 RDn = !(!BD_ENn & R_Wn);
 
-/* Data bus control: Enable tranciever when the board is enabled and the  */
+/* Data bus control:   */
 BUS_DIRn = !BD_ENn & !R_Wn;
 
 /* Memory Decode
@@ -60,6 +60,6 @@ BUS_DIRn = !BD_ENn & !R_Wn;
  *
  * Valid cycles have the board enabled and pulsed with ECLK.
  */
-RAMn = !(!BD_ENn & ECLK & (addr:[00xx..01xx] # (32Kn & addr:[03xx..7Fxx]) # (!32Kn & addr:[03xx..DFxx])));
+RAMn = !(!BD_ENn & (addr:[00xx..01xx] # (32Kn & addr:[03xx..7Fxx]) # (!32Kn & addr:[03xx..DFxx])));
 IOn =  !(!BD_ENn & addr:[02xx..02xx]);
-ROMn = !(!BD_ENn & ECLK & ((32Kn & addr:[80xx..FFxx]) # (!32Kn & addr:[E0xx..FFxx])));
+ROMn = !(!BD_ENn & ((32Kn & addr:[80xx..FFxx]) # (!32Kn & addr:[E0xx..FFxx])));
